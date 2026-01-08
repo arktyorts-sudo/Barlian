@@ -3,52 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil M. Barlian</title>
+    <title>Profil M. Barlian - Petualangan di Dunia TKJ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; background-color: #f4f4f9; color: #333; }
-        header { background: #2c3e50; color: #ffffff; padding: 2rem; text-align: center; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        section { background: #fff; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
-        .skill-badge { background: #3498db; color: white; padding: 5px 12px; border-radius: 20px; display: inline-block; margin: 5px 2px; font-size: 0.9rem; }
-        footer { text-align: center; padding: 2rem; color: #888; }
+        /* General Styles */
+        body {
+            font-family: 'Bangers', cursive; /* Gaya font Adventure Time */
+            line-height: 1.6;
+            margin: 0;
+            background: linear-gradient(to bottom, #87CEEB, #FFF8DC); /* Langit biru dan tanah pasir */
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: #FFD700; /* Warna Jake the Dog */
+            color: #8B4513; /* Warna tanah */
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 5px solid #A0522D;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-family: 'Press Start 2P', cursive; /* Font ala game retro */
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            text-shadow: 4px 4px #000;
+            color: #fff;
+        }
+        header p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px #000;
+        }
+
+        /* Animated Background Elements */
+        .cloud, .tree, .mountain {
+            position: absolute;
+            background-repeat: no-repeat;
+        }
+        .cloud {
+            width: 100px; height: 60px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            box-shadow: 30px 0 0 -10px rgba(255,255,255,0.8), -30px 0 0 -10px rgba(255,255,255,0.8), 0 0 0 10px rgba(255,255,255,0.8);
+            animation: floatCloud 20s infinite linear alternate;
+        }
+        .cloud:nth-child(1) { top: 20px; left: 10%; animation-delay: 0s; }
+        .cloud:nth-child(2) { top: 50px; left: 60%; animation-delay: 5s; transform: scale(0.8); }
+        .cloud:nth-child(3) { top: 80px; left: 30%; animation-delay: 10s; transform: scale(1.2); }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50px); }
+        }
+
+        /* Sections */
+        section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 0 #A0522D, 0 10px 15px rgba(0,0,0,0.3); /* Efek 3D ala kartun */
+            border: 3px solid #8B4513;
+            position: relative;
+        }
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: #8B4513;
+            border-bottom: 3px dashed #FFD700;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px #fff;
+        }
+        p {
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Skill Badges */
+        .skill-badge {
+            background: #3498db; /* Biru muda */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 8px 5px;
+            font-size: 1.1rem;
+            font-family: 'Press Start 2P', cursive;
+            border: 2px solid #2980b9;
+            box-shadow: 2px 2px 0 #2980b9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 4px 4px 0 #2980b9;
+        }
+
+        /* Character Images */
+        .character-image {
+            width: 120px; /* Ukuran gambar karakter */
+            height: auto;
+            position: absolute;
+            top: -30px; /* Sedikit keluar dari section */
+            right: 20px;
+            transform: rotate(5deg);
+            z-index: 1;
+        }
+        #tentang .character-image { right: 50px; animation: bounce 2s infinite ease-in-out; }
+        #keahlian .character-image { left: 30px; top: -20px; animation: floatAndRotate 3s infinite ease-in-out alternate; }
+        #kontak .character-image { right: 40px; top: -40px; transform: scaleX(-1); animation: bounce 2.5s infinite ease-in-out reverse; }
+
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+        }
+        @keyframes floatAndRotate {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #A0522D;
+            font-family: 'Bangers', cursive;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Halo, Saya M. Barlian</h1>
-    <p>Siswa TKJ & Tech Enthusiast</p>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+
+    <h1>M. BARLIAN</h1>
+    <p>Petualangan di Dunia Jaringan dan Komputer!</p>
 </header>
 
 <div class="container">
     <section id="tentang">
-        <h2>Informasi Pribadi</h2>
-        <p><strong>Nama:</strong> M. Barlian</p>
-        <p><strong>Sekolah:</strong> SMKN Pasirian</p>
-        <p><strong>Kelas:</strong> 12 TKJ B</p>
-        <p>Saya adalah siswa tingkat akhir di SMKN Pasirian yang berfokus pada infrastruktur jaringan, perakitan komputer, dan administrasi server.</p>
+        <img src="https://i.imgur.com/G5cKzW8.png" alt="Finn The Human" class="character-image"> <h2>Identitas Petualang</h2>
+        <p><strong>Nama:</strong> M. Barlian si Penjelajah Jaringan</p>
+        <p><strong>Sekolah:</strong> SMKN Pasirian, Kerajaan Komputer</p>
+        <p><strong>Kelas:</strong> 12 TKJ B - Kelas Para Pahlawan</p>
+        <p>Seorang siswa TKJ tingkat akhir yang siap menghadapi bahaya virus dan tantangan konfigurasi router. Senang berpetualang mencari solusi di dunia digital dan menjelajahi setiap sudut jaringan!</p>
     </section>
 
     <section id="keahlian">
-        <h2>Keahlian (Skills)</h2>
-        <div class="skill-badge">Mikrotik Configuration</div>
-        <div class="skill-badge">Linux Administration</div>
-        <div class="skill-badge">Network Troubleshooting</div>
-        <div class="skill-badge">Cisco Packet Tracer</div>
-        <div class="skill-badge">Basic HTML/CSS</div>
+        <img src="https://i.imgur.com/Q2xV40t.png" alt="Jake The Dog" class="character-image"> <h2>Jurus dan Kemampuan</h2>
+        <div class="skill-badge">Konfigurasi Mikrotik</div>
+        <div class="skill-badge">Administrasi Linux (Ooo-buntu)</div>
+        <div class="skill-badge">Troubleshooting Jaringan</div>
+        <div class="skill-badge">Simulasi Packet Tracer</div>
+        <div class="skill-badge">Dasar HTML/CSS/JavaScript</div>
+        <div class="skill-badge">Merakit PC (Golems Komputer)</div>
+        <p>Dengan jurus-jurus ini, saya siap membantu siapa saja yang punya masalah teknis!</p>
     </section>
 
     <section id="kontak">
-        <h2>Hubungi Saya</h2>
-        <p>Ingin bekerja sama atau sekadar menyapa? Kontak saya di:</p>
-        <p>Email: barlian@example.com (Ganti dengan emailmu)</p>
-        <p>Instagram: @barlian_ (Ganti dengan username-mu)</p>
+        <img src="https://i.imgur.com/F0j3y5e.png" alt="Princess Bubblegum" class="character-image"> <h2>Jalur Komunikasi</h2>
+        <p>Ingin bergabung dalam petualangan? Atau punya misi rahasia?</p>
+        <p><strong>Pesan Burung:</strong> barlian_adventure@email.com (Ganti dengan emailmu)</p>
+        <p><strong>Papan Pesan IG:</strong> @barlian_digital (Ganti dengan username-mu)</p>
+        <p>Hubungi saya, mari kita ciptakan keajaiban teknologi bersama!</p>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2025 M. Barlian. Dibuat dengan semangat TKJ.</p>
+    <p>&copy; 2025 M. Barlian. Dibuat dengan kekuatan matematika dan ilmu TKJ!</p>
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil M. Barlian - Petualangan di Dunia TKJ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Bangers', cursive; /* Gaya font Adventure Time */
+            line-height: 1.6;
+            margin: 0;
+            background: linear-gradient(to bottom, #87CEEB, #FFF8DC); /* Langit biru dan tanah pasir */
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: #FFD700; /* Warna Jake the Dog */
+            color: #8B4513; /* Warna tanah */
+            padding: 3rem;
+            text-align: center;
+            border-bottom: 5px solid #A0522D;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-family: 'Press Start 2P', cursive; /* Font ala game retro */
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            text-shadow: 4px 4px #000;
+            color: #fff;
+        }
+        header p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px #000;
+        }
+
+        /* Animated Background Elements */
+        .cloud, .tree, .mountain {
+            position: absolute;
+            background-repeat: no-repeat;
+        }
+        .cloud {
+            width: 100px; height: 60px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            box-shadow: 30px 0 0 -10px rgba(255,255,255,0.8), -30px 0 0 -10px rgba(255,255,255,0.8), 0 0 0 10px rgba(255,255,255,0.8);
+            animation: floatCloud 20s infinite linear alternate;
+        }
+        .cloud:nth-child(1) { top: 20px; left: 10%; animation-delay: 0s; }
+        .cloud:nth-child(2) { top: 50px; left: 60%; animation-delay: 5s; transform: scale(0.8); }
+        .cloud:nth-child(3) { top: 80px; left: 30%; animation-delay: 10s; transform: scale(1.2); }
+
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50px); }
+        }
+
+        /* Sections */
+        section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 0 #A0522D, 0 10px 15px rgba(0,0,0,0.3); /* Efek 3D ala kartun */
+            border: 3px solid #8B4513;
+            position: relative;
+        }
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: #8B4513;
+            border-bottom: 3px dashed #FFD700;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px #fff;
+        }
+        p {
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Skill Badges */
+        .skill-badge {
+            background: #3498db; /* Biru muda */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 8px 5px;
+            font-size: 1.1rem;
+            font-family: 'Press Start 2P', cursive;
+            border: 2px solid #2980b9;
+            box-shadow: 2px 2px 0 #2980b9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 4px 4px 0 #2980b9;
+        }
+
+        /* Character Images */
+        .character-image {
+            width: 120px; /* Ukuran gambar karakter */
+            height: auto;
+            position: absolute;
+            top: -30px; /* Sedikit keluar dari section */
+            right: 20px;
+            transform: rotate(5deg);
+            z-index: 1;
+        }
+        #tentang .character-image { right: 50px; animation: bounce 2s infinite ease-in-out; }
+        #keahlian .character-image { left: 30px; top: -20px; animation: floatAndRotate 3s infinite ease-in-out alternate; }
+        #kontak .character-image { right: 40px; top: -40px; transform: scaleX(-1); animation: bounce 2.5s infinite ease-in-out reverse; }
+
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+        }
+        @keyframes floatAndRotate {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #A0522D;
+            font-family: 'Bangers', cursive;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+
+    <h1>M. BARLIAN</h1>
+    <p>Petualangan di Dunia Jaringan dan Komputer!</p>
+</header>
+
+<div class="container">
+    <section id="tentang">
+        <img src="https://i.imgur.com/G5cKzW8.png" alt="Finn The Human" class="character-image"> <h2>Identitas Petualang</h2>
+        <p><strong>Nama:</strong> M. Barlian si Penjelajah Jaringan</p>
+        <p><strong>Sekolah:</strong> SMKN Pasirian, Kerajaan Komputer</p>
+        <p><strong>Kelas:</strong> 12 TKJ B - Kelas Para Pahlawan</p>
+        <p>Seorang siswa TKJ tingkat akhir yang siap menghadapi bahaya virus dan tantangan konfigurasi router. Senang berpetualang mencari solusi di dunia digital dan menjelajahi setiap sudut jaringan!</p>
+    </section>
+
+    <section id="keahlian">
+        <img src="https://i.imgur.com/Q2xV40t.png" alt="Jake The Dog" class="character-image"> <h2>Jurus dan Kemampuan</h2>
+        <div class="skill-badge">Konfigurasi Mikrotik</div>
+        <div class="skill-badge">Administrasi Linux (Ooo-buntu)</div>
+        <div class="skill-badge">Troubleshooting Jaringan</div>
+        <div class="skill-badge">Simulasi Packet Tracer</div>
+        <div class="skill-badge">Dasar HTML/CSS/JavaScript</div>
+        <div class="skill-badge">Merakit PC (Golems Komputer)</div>
+        <p>Dengan jurus-jurus ini, saya siap membantu siapa saja yang punya masalah teknis!</p>
+    </section>
+
+    <section id="kontak">
+        <img src="https://i.imgur.com/F0j3y5e.png" alt="Princess Bubblegum" class="character-image"> <h2>Jalur Komunikasi</h2>
+        <p>Ingin bergabung dalam petualangan? Atau punya misi rahasia?</p>
+        <p><strong>Pesan Burung:</strong> barlian_adventure@email.com (Ganti dengan emailmu)</p>
+        <p><strong>Papan Pesan IG:</strong> @barlian_digital (Ganti dengan username-mu)</p>
+        <p>Hubungi saya, mari kita ciptakan keajaiban teknologi bersama!</p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 M. Barlian. Dibuat dengan kekuatan matematika dan ilmu TKJ!</p>
 </footer>
 
 </body>
